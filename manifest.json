@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Gear to Trade",
+  "version": "0.1.0",
+  "description": "Ctrl+click an item on a pathofexile.com character page to open a trade search with its mods filled in.",
+  "browser_specific_settings": {
+    "gecko": { "id": "gear-to-trade@local", "strict_min_version": "128.0" }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.pathofexile.com/account/view-profile/*", "https://www.pathofexile.com/my-characters*"],
+      "js": ["intercept.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://www.pathofexile.com/account/view-profile/*", "https://www.pathofexile.com/my-characters*"],
+      "js": ["data/stats.js", "content.js"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }
+  ]
+}
